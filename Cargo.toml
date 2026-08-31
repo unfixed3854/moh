@@ -1,0 +1,59 @@
+[package]
+name = "moh"
+version = "0.1.0"
+authors = ["Maciej Augustyniak"]
+edition = "2024"
+description = "An experimental local-first coding agent with a durable Rust backend and Ratatui client"
+readme = "README.md"
+repository = "https://github.com/unfixed3854/moh"
+license = "Apache-2.0 OR MIT"
+keywords = ["coding-agent", "cli", "tui"]
+categories = ["command-line-utilities", "development-tools"]
+exclude = [
+    ".agents/**",
+    ".beads/**",
+    ".claude/**",
+    ".codex/**",
+    ".github/**",
+    ".superpowers/**",
+    "AGENTS.md",
+    "CLAUDE.md",
+    "docs/**",
+    "scripts/preview-command-menus.sh",
+]
+
+[dependencies]
+bytes = "1.12.1"
+capnp = "0.27.0"
+capnp-rpc = "0.27.0"
+chrono = { version = "0.4.45", default-features = false, features = ["clock", "serde"] }
+clap = { version = "4.5.60", features = ["derive"] }
+crossterm = "0.29.0"
+directories = "6.0.0"
+futures = "0.3.34"
+garde = { version = "0.23.0", features = ["derive", "pattern"] }
+humantime-serde = "1.1.1"
+pulldown-cmark = { version = "0.13.4", default-features = false }
+reqwest = { version = "0.13.4", default-features = false, features = ["json", "rustls"] }
+ratatui = { version = "0.30.2", features = ["unstable-rendered-line-info"] }
+rig = { package = "rig-core", version = "0.41.0" }
+rig-agent = "0.41.0"
+rusqlite = { version = "0.40.2", features = ["bundled"] }
+serde = { version = "1.0.229", features = ["derive"] }
+serde_json = "1.0.151"
+schemars = "1.2.2"
+tempfile = "3.27.0"
+thiserror = "2.0.20"
+tokio = { version = "1.53.1", features = ["fs", "io-util", "macros", "net", "process", "rt", "signal", "sync", "test-util", "time"] }
+tokio-util = { version = "0.7.19", features = ["compat"] }
+toml = "1.1.4"
+unicode-segmentation = "1.13.3"
+unicode-width = "0.2.2"
+xxhash-rust = { version = "0.8.18", features = ["xxh32", "xxh64"] }
+yaml_serde = "0.10.7"
+
+[target.'cfg(unix)'.dependencies]
+nix = { version = "0.31.3", features = ["fs", "process", "signal", "user"] }
+
+[dev-dependencies]
+wiremock = "0.6.5"
